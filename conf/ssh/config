@@ -1,0 +1,2 @@
+# avoid a connect bug
+KexAlgorithms ecdh-sha2-nistp521

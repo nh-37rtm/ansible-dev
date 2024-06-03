@@ -1,0 +1,22 @@
+version: '3.6'
+
+services:
+  ansible_dev: # exemple app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # network_mode: host
+    container_name: ansible_dev
+    restart: always
+    entrypoint: /bin/bash
+    command: [ "-c", "while true; do echo 'keeping container up ...'; sleep 10; done"]
+    extra_hosts:
+      host.docker.internal: host-gateway
+    dns: [ 10.1.231.1 ]
+    volumes:
+      - type: bind
+        source: ./
+        target: /opt/src
+      - type: bind
+        source: .bash_history
+        target: /root/.bash_history

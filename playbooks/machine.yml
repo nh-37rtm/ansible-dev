@@ -1,0 +1,9 @@
+---
+- name: Test
+  hosts: all
+
+  tasks:
+    - name: Test
+      ansible.builtin.lineinfile:
+        path: /etc/ssh/sshd_config
+        line: "#PermitRootLogin yes"

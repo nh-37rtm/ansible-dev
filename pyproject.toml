@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "src"
+version = "0.1.0"
+description = ""
+authors = ["nheim"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+ansible-lint = { version = "^6.22.0", markers = "platform_system != 'Windows'" }
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
