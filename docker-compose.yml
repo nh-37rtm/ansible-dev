@@ -13,6 +13,8 @@ services:
     extra_hosts:
       host.docker.internal: host-gateway
     dns: [ 10.1.231.1 ]
+    cap_add:
+      - NET_ADMIN
     volumes:
       - type: bind
         source: ./

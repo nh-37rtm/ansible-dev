@@ -1,2 +1,14 @@
 # avoid a connect bug
-KexAlgorithms ecdh-sha2-nistp521
+# KexAlgorithms ecdh-sha2-nistp521
+KexAlgorithms group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256,diffie-hellman-group14-sha1
+
+
+Host vps01.37rtm.local
+  HostName vps01.37rtm.local
+  ForwardAgent yes
+  Port 22
+  
+Host proxmox.37rtm.local
+  HostName proxmox.37rtm.local
+  ForwardAgent yes
+  Port 2121
