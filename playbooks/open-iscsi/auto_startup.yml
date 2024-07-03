@@ -1,0 +1,22 @@
+---
+- name: Test
+  hosts: all
+
+  tasks:
+
+    - name: Automatic startup
+      ansible.builtin.lineinfile:
+        path: /etc/iscsi/iscsid.conf
+        line: "node.startup = automatic"
+        state: present
+        insertafter: "# To manually startup the session, use \"manual\". The default is manual."
+    - name: Automatic startup
+      ansible.builtin.lineinfile:
+        path: /etc/iscsi/iscsid.conf
+        line: "node.startup = manual"
+        state: absent
+    - name: Enable service httpd and ensure it is not masked
+      ansible.builtin.systemd_service:
+        name: open-iscsi
+        state: started
+        masked: false

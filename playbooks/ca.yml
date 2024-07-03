@@ -1,0 +1,19 @@
+---
+- name: Test
+  hosts: all
+
+  tasks:
+    - name: "Fetch Root CA Certificate via SSH"
+      fetch:
+        src: /home/nheim/src/openvpn-server/openssl/ca-cert.pem
+        dest: /tmp/
+        flat: yes
+       # delegate_to: proxmox.37rtm.local
+
+    - name: "Copy"
+      ansible.builtin.copy:
+        src: /tmp/ca-cert.pem
+        dest: /usr/share/ca-certificates/
+
+    - name: Update cert index
+      shell: /usr/sbin/update-ca-certificates

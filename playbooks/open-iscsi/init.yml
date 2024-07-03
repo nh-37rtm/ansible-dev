@@ -1,0 +1,19 @@
+---
+- name: Test
+  hosts: all
+
+  tasks:
+    - name: Enable service httpd and ensure it is not masked
+      ansible.builtin.systemd_service:
+        name: open-iscsi
+        state: stopped
+    - name: Remove dependencies that are no longer required and purge their configuration files
+      ansible.builtin.apt:
+        state: absent
+        autoremove: true
+        purge: true
+    - name: Open-iscsi
+      ansible.builtin.apt:
+        name: open-iscsi
+        state: present
+
