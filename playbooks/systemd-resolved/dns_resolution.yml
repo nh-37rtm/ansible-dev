@@ -1,0 +1,29 @@
+---
+- name: Test
+  hosts: all
+
+  tasks:
+
+    - name: Resolved
+      ansible.builtin.apt:
+        name: systemd-resolved
+        state: present
+
+    - name: Automatic startup
+      ansible.builtin.lineinfile:
+        path: /etc/systemd/resolved.conf
+        line: "DNS=10.1.231.1"
+        state: present
+        insertafter: "#DNS="
+
+    - name: Automatic startup
+      ansible.builtin.lineinfile:
+        path: /etc/systemd/resolved.conf
+        line: "Domains=~37rtm.local"
+        state: present
+        insertafter: "#FallbackDNS="
+
+    - name: Enable service httpd and ensure it is not masked
+      ansible.builtin.systemd_service:
+        name: systemd-resolved
+        state: restarted

@@ -1,0 +1,11 @@
+---
+- name: Test
+  hosts: all
+
+  tasks:
+    - name: Include01
+      ansible.builtin.include_tasks:
+        file: init.yml
+    - name: Include02
+      ansible.builtin.include_tasks:
+        file: auto_startup.yml
