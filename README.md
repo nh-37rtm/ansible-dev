@@ -2,6 +2,7 @@
 
 # README
 
+allow to spawn a local Ansible developper environement in minutes using docker compose
 
 ## using ansible example
 
